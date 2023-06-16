@@ -1,6 +1,6 @@
+import styled from '@emotion/styled';
 
-
-.gallery {
+export const ListGallery = styled.ul`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -11,4 +11,4 @@
   margin-left: auto;
   margin-right: auto;
   list-style: none;
-}
+`;

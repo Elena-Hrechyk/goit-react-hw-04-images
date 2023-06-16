@@ -1,4 +1,6 @@
-.button {
+import styled from '@emotion/styled';
+
+export const ButtonSearch = styled.button`
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -22,10 +24,9 @@
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
     color 300ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.button:hover,
-.button:focus {
-  background-color: #303f9f;
-  color: #fff;
-}
+  &:hover,
+  &:focus {
+    background-color: #303f9f;
+    color: #fff;
+  }
+`;

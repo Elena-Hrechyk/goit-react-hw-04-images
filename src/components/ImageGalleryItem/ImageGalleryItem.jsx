@@ -1,45 +1,65 @@
-import { Component } from 'react';
-// import PropTypes from 'prop-types';
-import css from './ImageGalleryItem.module.css';
+import { useState } from 'react';
+import { ItemCard, Image } from './ImageGalleryItem.styled';
 import { ModalWin } from 'components/Modal/Modal';
 
-export class ImageGalleryItem extends Component {
-  state = { isModalOpen: false };
+export const ImageGalleryItem = ({ id, webformatURL, tags, largeImageURL }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  toggleModal = () => {
-    this.setState(({ isModalOpen }) => ({
-      isModalOpen: !isModalOpen,
-    }));
+  const toggleModal = () => {
+    setIsModalOpen(isModalOpen => !isModalOpen);
   };
 
-  render() {
-    const { id, webformatURL, tags, largeImageURL } = this.props;
-    const { isModalOpen } = this.state;
-
-    return (
-      <li className={css.card__item} key={id}>
-        <img
-          src={webformatURL}
-          alt={tags}
-          onClick={this.toggleModal}
-          className={css.image}
-          loading="lazy"
+  return (
+    <ItemCard key={id}>
+      <Image
+        src={webformatURL}
+        alt={tags}
+        onClick={toggleModal}
+        loading="lazy"
+      />
+      {isModalOpen && (
+        <ModalWin
+          largeImgURL={largeImageURL}
+          tags={tags}
+          isOpen={isModalOpen}
+          onClose={toggleModal}
         />
-        {isModalOpen && (
-          <ModalWin
-            largeImgURL={largeImageURL}
-            tags={tags}
-            isOpen={isModalOpen}
-            onClose={this.toggleModal}
-          />
-        )}
-      </li>
-    );
-  }
-}
+      )}
+    </ItemCard>
+  );
+};
 
-// ImageGalleryItem.proptype = {
-//   id: PropTypes.number.isRequired,
-//   webformatURL: PropTypes.string.isRequired,
-//   tags: PropTypes.string.isRequired,
-// };
+// export class ImageGalleryItem extends Component {
+//   state = { isModalOpen: false };
+
+//   toggleModal = () => {
+//     this.setState(({ isModalOpen }) => ({
+//       isModalOpen: !isModalOpen,
+//     }));
+//   };
+
+//   render() {
+//     const { id, webformatURL, tags, largeImageURL } = this.props;
+//     const { isModalOpen } = this.state;
+
+//     return (
+//       <ItemCard key={id}>
+//         <Image
+//           src={webformatURL}
+//           alt={tags}
+//           onClick={this.toggleModal}
+
+//           loading="lazy"
+//         />
+//         {isModalOpen && (
+//           <ModalWin
+//             largeImgURL={largeImageURL}
+//             tags={tags}
+//             isOpen={isModalOpen}
+//             onClose={this.toggleModal}
+//           />
+//         )}
+//       </ItemCard>
+//     );
+//   }
+// }

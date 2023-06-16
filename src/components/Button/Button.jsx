@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-import css from './Button.module.css';
+import { ButtonSearch } from './Button.styled';
 
 export const Button = ({ onClick }) => {
   return (
-    <button type="button" className={css.button} onClick={onClick}>
+    <ButtonSearch type="button" onClick={onClick}>
       Load more
-    </button>
+    </ButtonSearch>
   );
 };
 

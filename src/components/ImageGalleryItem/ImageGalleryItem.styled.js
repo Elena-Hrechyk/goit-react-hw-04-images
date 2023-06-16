@@ -1,4 +1,6 @@
-.card__item {
+import styled from '@emotion/styled';
+
+export const ItemCard = styled.li`
   width: 330px;
   height: 225px;
 
@@ -13,16 +15,15 @@
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
     cursor 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
+  &:hover,
+  &:focus {
+    box-shadow: 10px 7px 2px #5e615f6e;
+    transform: scale(1.03);
+    cursor: zoom-in;
+  }
+`;
 
-.card__item:hover,
-.card__item:focus {
-  box-shadow: 10px 7px 2px #5e615f6e;
-  transform: scale(1.03);
-  cursor: zoom-in;
-}
-
-.image {
+export const Image = styled.img`
   display: block;
   padding: 4px;
 
@@ -30,4 +31,4 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
-}
+`;
