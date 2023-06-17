@@ -17,6 +17,7 @@ export const App = () => {
 
   useEffect(() => {
     if (value === '') return;
+
     async function getImages() {
       if (abortCtrl.current) {
         abortCtrl.current.abort();
@@ -27,11 +28,13 @@ export const App = () => {
         setError(null);
 
         const resps = await fetchImages(value, page, abortCtrl);
-        if (resps.hits.length === 0) {
+        const { hits, total } = resps;
+
+        if (!hits.length) {
           setError('Ooops! Try again!');
         }
-        totalImages = resps.total;
-        setImages(prevState => [...prevState, ...resps.hits]);
+        totalImages = total;
+        setImages(prevState => [...prevState, ...hits]);
       } catch (error) {
         if (error.code !== 'ERR_CANCELED') {
           setError('Ooops! Try again!');
