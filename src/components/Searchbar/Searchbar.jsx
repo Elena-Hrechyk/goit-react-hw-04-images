@@ -15,7 +15,6 @@ const initialValues = {
 export const Searchbar = ({ onSearch }) => {
   const onSubmit = (values, { resetForm }) => {
     const value = values.search.trim().toLowerCase();
-    console.log(value);
     onSearch(value);
     resetForm();
   };
